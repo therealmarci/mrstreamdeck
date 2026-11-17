@@ -1,0 +1,51 @@
+name: 🐞 Fehler melden
+description: Etwas funktioniert nicht wie erwartet.
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke fürs Melden! Bitte prüfe vorher in den Einstellungen einer MRadmin-Taste, ob das Stream Deck verbunden ist
+        (häufigste Ursache: falsche Server-Adresse oder `stream-deck.enabled: false` in MRadmins config.yml).
+  - type: input
+    id: version
+    attributes:
+      label: MRstreamdeck-Version
+      description: Stream-Deck-App → Einstellungen → Plugins → MRadmin
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: server
+    attributes:
+      label: Stream-Deck-App und MRadmin-Version
+      description: Version der Stream-Deck-App und Ausgabe von `/mradmin version` auf dem Server
+      placeholder: "Stream Deck 7.1, MRadmin STA-1.7.0-bu001"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: Was ist passiert?
+      description: Welche Taste, was hast du erwartet, was zeigt sie stattdessen?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Schritte zum Nachstellen
+      placeholder: |
+        1. Taste „Tickets“ aufs Stream Deck ziehen
+        2. ...
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log
+      description: "Inhalt von at.marcelr.mradmin.sdPlugin/logs (Windows: %APPDATA%\Elgato\StreamDeck\Plugins) - der Schlüssel steht dort nicht drin."
+      render: text
+  - type: textarea
+    id: config
+    attributes:
+      label: Einstellungen der Taste (optional)
+      description: Welche Auswahl in den Einstellungen der Taste getroffen ist. Keine Schlüssel posten!
+      render: text

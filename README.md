@@ -22,6 +22,13 @@
 2. Eine MRadmin-Taste aufs Stream Deck ziehen, Server-Adresse eintragen, **Mit Code verbinden**.
 3. Den Code im Spiel mit `/web link <Code>` bestätigen - fertig.
 
+## Anleitung
+| Thema | Wiki |
+|---|---|
+| Installieren und verbinden | [Schnellstart](https://mrtechnology.marcelr.at/wiki/mrstreamdeck/schnellstart/), [Verbinden](https://mrtechnology.marcelr.at/wiki/mrstreamdeck/verbinden/) |
+| Alle Tasten | [für Spieler](https://mrtechnology.marcelr.at/wiki/mrstreamdeck/tasten/), [fürs Team](https://mrtechnology.marcelr.at/wiki/mrstreamdeck/team-tasten/) |
+| Probleme | [Häufige Fragen](https://mrtechnology.marcelr.at/wiki/mrstreamdeck/faq/) |
+
 ## Lizenz
 [MRtechnology Lizenz 1.0](LICENSE)
 

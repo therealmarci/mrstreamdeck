@@ -1,0 +1,95 @@
+# Prüfrunde: bei jedem Push und Pull-Request, jeden Montag und vor jedem Release (release.yml ruft sie auf - ein
+# Release entsteht nur, wenn alles grün ist).
+#   - Bauen (rollup), Manifest prüfen (streamdeck validate), Plugin packen (.streamDeckPlugin)
+#   - Bibliotheken, die im Plugin landen, gegen bekannte Lücken (npm audit, ab hoch stoppt es)
+#   - CodeQL (JavaScript/TypeScript, Ergebnisse im Reiter "Security")
+# Fehlalarme von CodeQL im Reiter "Security" mit Begründung schließen. Ablauf: docs/RELEASES.md
+name: Checks
+
+on:
+  push:
+    branches: [main, beta, dev]
+  pull_request:
+  schedule:
+    - cron: '41 5 * * 1'
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and pack
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - run: npm ci
+      # Only what ends up in the plugin stops the round; the build tools are listed in the summary.
+      - name: Libraries in the plugin (npm audit)
+        run: |
+          npm audit --omit=dev --audit-level=high
+          {
+            echo "### npm audit (all, also build tools)"
+            echo '~~~'
+            npm audit || true
+            echo '~~~'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - run: npm run build
+      - run: npm run validate
+      - name: Version into the manifest and pack
+        run: |
+          VERSION=$(grep '^version=' version.properties | cut -d= -f2 | tr -d '[:space:]')
+          # The Stream Deck wants four numbers: MAJOR.MINOR.PATCH.BUILD (BET-1.4.0-bu002 -> 1.4.0.2)
+          NUM=$(printf '%s' "$VERSION" | sed -E 's/^(STA|BET)-([0-9]+\.[0-9]+\.[0-9]+)-bu0*([0-9]+)$/\2.\3/')
+          node scripts/set-version.mjs "$NUM"
+          npx streamdeck pack at.marcelr.mradmin.sdPlugin --output dist --force
+          mv dist/at.marcelr.mradmin.streamDeckPlugin "dist/MRstreamdeck-$VERSION.streamDeckPlugin"
+          ls -la dist
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: MRstreamdeck
+          path: dist/*.streamDeckPlugin
+          if-no-files-found: error
+
+  codeql:
+    name: CodeQL (javascript-typescript)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: github/codeql-action/init@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        with:
+          languages: javascript-typescript
+          build-mode: none
+          queries: security-extended
+      - uses: github/codeql-action/analyze@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        with:
+          category: /language:javascript-typescript
+
+  codeql-gate:
+    name: CodeQL result
+    needs: codeql
+    # Pull requests from forks may not upload results - there is nothing to evaluate then.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Stop on open findings with severity high/critical
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash .github/codeql-gate.sh

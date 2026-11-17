@@ -84,9 +84,12 @@ export class MaintenanceAction extends MRadminAction {
 @action({ UUID: "at.marcelr.mradmin.waitroom" })
 export class WaitroomAction extends MRadminAction {
 	protected override view(state: DeckState): Tile | null {
-		const room = state.team?.room;
-		if (!room) {
+		if (!state.team) {
 			return null;
+		}
+		const room = state.team.room;
+		if (!room) {
+			return { icon: "users", title: t("room.title"), value: "–", detail: t("room.none"), tone: "off" };
 		}
 		const value = room.restarting ? t("room.restarting") : room.online ? t("room.online") : t("room.offline");
 		return { icon: "users", title: t("room.title"), value, detail: t("room.waiting", { n: room.players ?? 0 }),
@@ -168,7 +171,7 @@ export class RestartAction extends MRadminAction<RestartSettings> {
 			return { icon: "power", title: t("restart.title"), value: "–", detail: t("restart.disabled"), tone: "off" };
 		}
 		const minutes = this.minutes(state, settings);
-		return { icon: "power", title: t("restart.title"), value: `${minutes} min`, detail: t("restart.in", { min: minutes }), tone: "info" };
+		return { icon: "power", title: t("restart.title"), value: `${minutes} min`, detail: t("restart.twice"), tone: "info" };
 	}
 
 	protected override async pressed(action: Action<RestartSettings>, state: DeckState, settings: RestartSettings): Promise<void> {

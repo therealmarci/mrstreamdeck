@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 Anleitung zu MRstreamdeck
+    url: https://mrtechnology.marcelr.at/docs/mrstreamdeck/
+    about: Installation, Verbinden, alle Tasten und häufige Fragen.
+  - name: 🐞 Fehler bequem über die Website melden
+    url: https://mrtechnology.marcelr.at/report/mrstreamdeck/
+    about: Formular mit Versionsauswahl, die hochgeladene Config wird vorher im Browser geschwärzt.
