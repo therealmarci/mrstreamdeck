@@ -4,6 +4,6 @@
 
 
 ## Getestet
-- [ ] `gradlew build` läuft (inkl. Tests)
+- [ ] `npm run build` und `npm run validate` laufen
 - [ ] Auf einem Paper-26.3-Testserver ausprobiert
 - [ ] `CHANGELOG.md` unter „Unveröffentlicht“ ergänzt
