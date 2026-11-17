@@ -10,5 +10,77 @@
 		"Name": "Tickets",
 		"Tooltip": "Offene Tickets des Servers (Team) oder deine eigenen Tickets."
 	},
+	"at.marcelr.mradmin.inbox": {
+		"Name": "Posteingang",
+		"Tooltip": "Ungelesene Benachrichtigungen - rot bei einem Absturz."
+	},
+	"at.marcelr.mradmin.countdown": {
+		"Name": "Nächster Neustart",
+		"Tooltip": "Countdown bis zum nächsten Neustart, Stopp oder zur Wartung."
+	},
+	"at.marcelr.mradmin.stats": {
+		"Name": "Statistik",
+		"Tooltip": "Eine deiner Spielstatistiken."
+	},
+	"at.marcelr.mradmin.sleep": {
+		"Name": "Schlafabstimmung",
+		"Tooltip": "Wie viele schlafen und wie viele nötig sind."
+	},
+	"at.marcelr.mradmin.chunkloader": {
+		"Name": "Chunkloader",
+		"Tooltip": "Einer deiner Chunkloader - Drücken schaltet ihn an oder aus."
+	},
+	"at.marcelr.mradmin.duel": {
+		"Name": "Duell",
+		"Tooltip": "Dein letztes Duell oder deine Duell-Bilanz."
+	},
+	"at.marcelr.mradmin.performance": {
+		"Name": "Leistung",
+		"Tooltip": "TPS, Tick-Zeit oder RAM mit den letzten zehn Minuten (Team)."
+	},
+	"at.marcelr.mradmin.alerts": {
+		"Name": "Warnungen",
+		"Tooltip": "Alles, was gerade Aufmerksamkeit braucht (Team)."
+	},
+	"at.marcelr.mradmin.chunkwarnings": {
+		"Name": "Chunkloader-Warnungen",
+		"Tooltip": "Gesperrte, durch Lags abgeschaltete und auffällige Chunkloader (Team)."
+	},
+	"at.marcelr.mradmin.review": {
+		"Name": "Duelle zur Prüfung",
+		"Tooltip": "Duell-Runden, die auf eine Prüfung warten (Team)."
+	},
+	"at.marcelr.mradmin.maintenance": {
+		"Name": "Wartung",
+		"Tooltip": "Laufende oder nächste Wartung."
+	},
+	"at.marcelr.mradmin.waitroom": {
+		"Name": "Warteraum",
+		"Tooltip": "Zustand des Warteraum-Servers (Team)."
+	},
+	"at.marcelr.mradmin.staffchat": {
+		"Name": "Staff-Chat",
+		"Tooltip": "Neue Nachrichten im Staff-Chat - Drücken markiert sie als gelesen (Team)."
+	},
+	"at.marcelr.mradmin.adminmode": {
+		"Name": "Admin-Modus",
+		"Tooltip": "Admin-Modus an- oder ausschalten - zweimal drücken (Team, im Spiel)."
+	},
+	"at.marcelr.mradmin.restart": {
+		"Name": "Neustart",
+		"Tooltip": "Server in 15, 30 oder 60 Minuten neu starten - zweimal drücken; läuft einer, bricht zweimal Drücken ihn ab (Team)."
+	},
+	"at.marcelr.mradmin.announce": {
+		"Name": "Ankündigung",
+		"Tooltip": "Ankündigungsvorlage senden - zweimal drücken (Team)."
+	},
+	"at.marcelr.mradmin.plugin": {
+		"Name": "Plugin-Taste",
+		"Tooltip": "Eine beliebige Taste eines Plugins."
+	},
+	"at.marcelr.mradmin.dial": {
+		"Name": "Überblick-Drehregler",
+		"Tooltip": "Stream Deck +: durch Server, Leistung, Tickets, Warnungen, Posteingang und nächsten Neustart drehen; Drücken öffnet es."
+	},
 	"Localization": {}
 }

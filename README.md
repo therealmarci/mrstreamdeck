@@ -13,9 +13,9 @@
 - Für Spieler und das Team - jede Taste zeigt nur, was du auch in der Weboberfläche siehst
 
 ## Was kann MRstreamdeck?
-- **Server-Übersicht:** Spieler online, Neustart-Countdown, Wartung (Team: TPS)
-- **Tickets:** offene Tickets des Servers bzw. deine eigenen
-- Weitere Tasten folgen (Chunkloader, Duelle, Leistung, Warnungen, Neustart …)
+- **Für Spieler:** Server-Übersicht, Tickets, Posteingang, nächster Neustart, Statistik, Schlafabstimmung, Chunkloader an/aus, letztes Duell
+- **Fürs Team:** Leistung mit Kurve, Warnungen, Chunkloader-Warnungen, Duelle zur Prüfung, Wartung, Warteraum, Staff-Chat, Admin-Modus, Neustart, Ankündigung
+- **Stream Deck +:** Überblick auf dem Drehregler
 
 ## Schnellstart
 1. Plugin installieren (Doppelklick auf die `.streamDeckPlugin`-Datei).

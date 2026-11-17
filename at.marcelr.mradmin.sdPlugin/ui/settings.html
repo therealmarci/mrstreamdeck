@@ -75,6 +75,49 @@
 		</div>
 	</section>
 
+	<section class="key" data-action="at.marcelr.mradmin.stats" hidden>
+		<div class="item">
+			<label class="label" for="stat" data-t="stat"></label>
+			<div class="value"><select id="stat" data-setting="stat" data-options="stats"></select></div>
+		</div>
+	</section>
+
+	<section class="key" data-action="at.marcelr.mradmin.performance" hidden>
+		<div class="item">
+			<label class="label" for="metric" data-t="metric"></label>
+			<div class="value">
+				<select id="metric" data-setting="metric">
+					<option value="tps">TPS</option>
+					<option value="mspt" data-t="metricMspt"></option>
+					<option value="ram">RAM</option>
+				</select>
+			</div>
+		</div>
+	</section>
+
+	<section class="key" data-action="at.marcelr.mradmin.restart" hidden>
+		<div class="item">
+			<label class="label" for="minutes" data-t="minutes"></label>
+			<div class="value"><select id="minutes" data-setting="minutes" data-options="minutes"></select></div>
+		</div>
+		<p class="hint" data-t="restartHint"></p>
+	</section>
+
+	<section class="key" data-action="at.marcelr.mradmin.announce" hidden>
+		<div class="item">
+			<label class="label" for="preset" data-t="preset"></label>
+			<div class="value"><select id="preset" data-setting="preset" data-options="presets"></select></div>
+		</div>
+		<p class="hint" data-t="announceHint"></p>
+	</section>
+
+	<section class="key" data-action="at.marcelr.mradmin.chunkloader at.marcelr.mradmin.chunkwarnings at.marcelr.mradmin.duel at.marcelr.mradmin.review at.marcelr.mradmin.plugin" hidden>
+		<div class="item">
+			<label class="label" for="tile" data-t="tile"></label>
+			<div class="value"><select id="tile" data-setting="tile" data-options="tiles"></select></div>
+		</div>
+	</section>
+
 	<script src="settings.js"></script>
 </body>
 </html>

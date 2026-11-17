@@ -10,12 +10,23 @@
 	"Icon": "imgs/plugin/marketplace",
 	"CodePath": "bin/plugin.js",
 	"SDKVersion": 3,
-	"Software": { "MinimumVersion": "7.1" },
+	"Software": {
+		"MinimumVersion": "7.1"
+	},
 	"OS": [
-		{ "Platform": "mac", "MinimumVersion": "12" },
-		{ "Platform": "windows", "MinimumVersion": "10" }
+		{
+			"Platform": "mac",
+			"MinimumVersion": "12"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
 	],
-	"Nodejs": { "Version": "24", "Debug": "disabled" },
+	"Nodejs": {
+		"Version": "24",
+		"Debug": "disabled"
+	},
 	"UUID": "at.marcelr.mradmin",
 	"Actions": [
 		{
@@ -24,8 +35,15 @@
 			"Icon": "imgs/actions/server/icon",
 			"Tooltip": "Players online, restarts and maintenance - for the team also the TPS.",
 			"PropertyInspectorPath": "ui/settings.html",
-			"Controllers": ["Keypad"],
-			"States": [{ "Image": "imgs/actions/server/key", "ShowTitle": false }]
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/server/key",
+					"ShowTitle": false
+				}
+			]
 		},
 		{
 			"Name": "Tickets",
@@ -33,8 +51,310 @@
 			"Icon": "imgs/actions/tickets/icon",
 			"Tooltip": "Open tickets of the server (team) or your own tickets.",
 			"PropertyInspectorPath": "ui/settings.html",
-			"Controllers": ["Keypad"],
-			"States": [{ "Image": "imgs/actions/tickets/key", "ShowTitle": false }]
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/tickets/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Inbox",
+			"UUID": "at.marcelr.mradmin.inbox",
+			"Icon": "imgs/actions/inbox/icon",
+			"Tooltip": "Unread notifications - red on a crash.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/inbox/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Next restart",
+			"UUID": "at.marcelr.mradmin.countdown",
+			"Icon": "imgs/actions/countdown/icon",
+			"Tooltip": "Countdown to the next restart, stop or maintenance.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/countdown/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Statistics",
+			"UUID": "at.marcelr.mradmin.stats",
+			"Icon": "imgs/actions/stats/icon",
+			"Tooltip": "One of your game statistics.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/stats/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Sleep vote",
+			"UUID": "at.marcelr.mradmin.sleep",
+			"Icon": "imgs/actions/sleep/icon",
+			"Tooltip": "How many sleep and how many are needed.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/sleep/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Chunk loader",
+			"UUID": "at.marcelr.mradmin.chunkloader",
+			"Icon": "imgs/actions/chunkloader/icon",
+			"Tooltip": "One of your chunk loaders - press to switch it on or off.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/chunkloader/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Duel",
+			"UUID": "at.marcelr.mradmin.duel",
+			"Icon": "imgs/actions/duel/icon",
+			"Tooltip": "Your last duel or your duel record.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/duel/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Performance",
+			"UUID": "at.marcelr.mradmin.performance",
+			"Icon": "imgs/actions/performance/icon",
+			"Tooltip": "TPS, tick time or RAM with the last ten minutes (team).",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/performance/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Warnings",
+			"UUID": "at.marcelr.mradmin.alerts",
+			"Icon": "imgs/actions/alerts/icon",
+			"Tooltip": "Everything that needs attention right now (team).",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/alerts/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Chunk loader warnings",
+			"UUID": "at.marcelr.mradmin.chunkwarnings",
+			"Icon": "imgs/actions/chunkwarnings/icon",
+			"Tooltip": "Locked, lag-disabled and conspicuous chunk loaders (team).",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/chunkwarnings/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Duels to review",
+			"UUID": "at.marcelr.mradmin.review",
+			"Icon": "imgs/actions/review/icon",
+			"Tooltip": "Duel rounds waiting for a review (team).",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/review/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Maintenance",
+			"UUID": "at.marcelr.mradmin.maintenance",
+			"Icon": "imgs/actions/maintenance/icon",
+			"Tooltip": "Running or next maintenance.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/maintenance/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Waiting room",
+			"UUID": "at.marcelr.mradmin.waitroom",
+			"Icon": "imgs/actions/waitroom/icon",
+			"Tooltip": "State of the waiting room server (team).",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/waitroom/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Staff chat",
+			"UUID": "at.marcelr.mradmin.staffchat",
+			"Icon": "imgs/actions/staffchat/icon",
+			"Tooltip": "New messages in the staff chat - press marks them as read (team).",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/staffchat/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Admin mode",
+			"UUID": "at.marcelr.mradmin.adminmode",
+			"Icon": "imgs/actions/adminmode/icon",
+			"Tooltip": "Switch the admin mode on or off - press twice (team, in game).",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/adminmode/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Restart",
+			"UUID": "at.marcelr.mradmin.restart",
+			"Icon": "imgs/actions/restart/icon",
+			"Tooltip": "Restart the server in 15, 30 or 60 minutes - press twice; while one runs, press twice cancels it (team).",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/restart/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Announcement",
+			"UUID": "at.marcelr.mradmin.announce",
+			"Icon": "imgs/actions/announce/icon",
+			"Tooltip": "Send an announcement template - press twice (team).",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/announce/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Plugin key",
+			"UUID": "at.marcelr.mradmin.plugin",
+			"Icon": "imgs/actions/plugin/icon",
+			"Tooltip": "Any key a plugin offers.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/plugin/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Overview dial",
+			"UUID": "at.marcelr.mradmin.dial",
+			"Icon": "imgs/actions/dial/icon",
+			"Tooltip": "Stream Deck +: turn through server, performance, tickets, warnings, inbox and the next restart; press opens it.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Encoder"
+			],
+			"Encoder": {
+				"layout": "layouts/dial.json",
+				"TriggerDescription": {
+					"Rotate": "Next / previous",
+					"Push": "Open in the browser",
+					"Touch": "Open in the browser"
+				}
+			},
+			"States": [
+				{
+					"Image": "imgs/actions/dial/key"
+				}
+			]
 		}
 	]
 }

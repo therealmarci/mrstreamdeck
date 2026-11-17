@@ -9,12 +9,27 @@ const crown = fs.readFileSync("scripts/crown.svg", "utf8");
 
 /** Line symbols - the same as src/lib/render.ts. */
 const ICONS = {
-	server: "M4 4h16v6H4zM4 14h16v6H4zM8 7h.01M8 17h.01M12 7h4M12 17h4",
-	ticket: "M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4z",
+	"server": "M4 4h16v6H4zM4 14h16v6H4zM8 7h.01M8 17h.01M12 7h4M12 17h4",
+	"ticket": "M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4z",
+	"mail": "M3 6h18v12H3zM3 7l9 6 9-6",
+	"clock": "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM12 7v5l3 2",
+	"chart": "M4 20V10M10 20V4M16 20v-7M22 20H2",
+	"moon": "M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z",
+	"grid": "M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z",
+	"swords": "M14.5 17.5 3 6V3h3l11.5 11.5M13 19l6-6M16 16l4 4M19 21l2-2M9.5 17.5 21 6V3h-3L6.5 14.5M11 19l-6-6M8 16l-4 4M5 21l-2-2",
+	"pulse": "M3 12h4l2-6 4 12 2-6h6",
+	"alert": "M12 3 2 20h20zM12 9v5M12 17h.01",
+	"tool": "M14.7 6.3a4 4 0 0 0-5.4 5.2L4 16.8V20h3.2l5.3-5.3a4 4 0 0 0 5.2-5.4l-2.5 2.5-2.4-.6-.6-2.4z",
+	"users": "M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 9c0-3.3 3.1-6 7-6s7 2.7 7 6M16 3.5a4 4 0 0 1 0 7M18 14c2.4.6 4 2.6 4 5",
+	"chat": "M4 5h16v11H9l-5 4z",
+	"shield": "M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z",
+	"power": "M12 3v8M6.3 6.3a8 8 0 1 0 11.4 0",
+	"megaphone": "M3 10v4h3l7 4V6L6 10zM16 9a3 3 0 0 1 0 6M18.5 6.5a7 7 0 0 1 0 11",
+	"box": "M12 3 4 7.5v9L12 21l8-4.5v-9zM4 7.5l8 4.5 8-4.5M12 12v9"
 };
 
 /** action id -> symbol */
-const ACTIONS = { server: "server", tickets: "ticket" };
+const ACTIONS = {"server":"server","tickets":"ticket","inbox":"mail","countdown":"clock","stats":"chart","sleep":"moon","chunkloader":"grid","duel":"swords","performance":"pulse","alerts":"alert","chunkwarnings":"grid","review":"swords","maintenance":"tool","waitroom":"users","staffchat":"chat","adminmode":"shield","restart":"power","announce":"megaphone","plugin":"box","dial":"pulse"};
 
 function png(svg, size, file) {
 	const data = new Resvg(svg, { fitTo: { mode: "width", value: size }, background: "rgba(0,0,0,0)" }).render().asPng();

@@ -34,6 +34,16 @@ const TEXTS = {
 		modeAuto: "Automatisch",
 		modeTeam: "Tickets des Servers (Team)",
 		modeMine: "Meine Tickets",
+		stat: "Statistik",
+		metric: "Wert",
+		metricMspt: "Tick-Zeit",
+		minutes: "Countdown",
+		restartHint: "Zweimal drücken startet den Neustart. Läuft einer, bricht zweimal Drücken ihn ab. Notfall-Neustarts gehen nur im Browser.",
+		preset: "Vorlage",
+		announceHint: "Zweimal drücken sendet die Vorlage. Nur Vorlagen ohne einzusetzende Werte.",
+		tile: "Taste",
+		auto: "Automatisch (erste)",
+		nothing: "Noch nichts da",
 	},
 	en: {
 		connection: "Connection",
@@ -66,6 +76,16 @@ const TEXTS = {
 		modeAuto: "Automatic",
 		modeTeam: "Tickets of the server (team)",
 		modeMine: "My tickets",
+		stat: "Statistic",
+		metric: "Value",
+		metricMspt: "Tick time",
+		minutes: "Countdown",
+		restartHint: "Press twice to start the restart. While one runs, pressing twice cancels it. Emergency restarts only work in the browser.",
+		preset: "Template",
+		announceHint: "Press twice to send the template. Only templates without values to fill in.",
+		tile: "Key",
+		auto: "Automatic (first)",
+		nothing: "Nothing there yet",
 	},
 };
 
@@ -101,7 +121,7 @@ function connectElgatoStreamDeckSocket(port, uuid, registerEvent, info, actionIn
 		el.textContent = t(el.dataset.t);
 	}
 	for (const block of document.querySelectorAll("section.key")) {
-		block.hidden = block.dataset.action !== actionId;
+		block.hidden = !block.dataset.action.split(" ").includes(actionId);
 	}
 	for (const field of document.querySelectorAll("[data-setting]")) {
 		if (settings[field.dataset.setting] !== undefined) {
@@ -127,7 +147,26 @@ function connectElgatoStreamDeckSocket(port, uuid, registerEvent, info, actionIn
 	};
 }
 
+/** Fills the choices of this key (statistics, countdowns, templates, plugin keys) - the selection stays. */
+function fill(options) {
+	for (const select of document.querySelectorAll("select[data-options]")) {
+		const list = options?.[select.dataset.options];
+		if (!Array.isArray(list)) {
+			continue;
+		}
+		const current = settings[select.dataset.setting] ?? "";
+		const items = list.map((o) => (typeof o === "object" ? o : { value: String(o), label: select.dataset.options === "minutes" ? o + " min" : String(o) }));
+		const auto = ["tiles", "presets"].includes(select.dataset.options) ? [{ value: "", label: t(items.length ? "auto" : "nothing") }] : [];
+		if (current && !items.some((o) => o.value === current)) {
+			items.push({ value: current, label: current });
+		}
+		select.innerHTML = [...auto, ...items].map((o) => `<option value="${escape(o.value)}">${escape(o.label)}</option>`).join("");
+		select.value = current;
+	}
+}
+
 function show(s) {
+	fill(s.options);
 	const tone = s.status === "ok" ? "ok" : s.status === "linking" ? "warn" : s.status === "setup" ? "" : "bad";
 	$("status").className = "status " + tone;
 	$("status").textContent = t("status." + s.status, { player: s.player + (s.server ? " · " + s.server : "") });

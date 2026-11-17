@@ -111,3 +111,27 @@ export function render(tile: Tile): string {
 	];
 	return "data:image/svg+xml;charset=utf8," + encodeURIComponent(parts.join(""));
 }
+
+/**
+ * The touch strip of a dial (Stream Deck +, 200 x 100): the same parts side by side, with dots for the pages the dial
+ * turns through.
+ */
+export function renderDial(tile: Tile, page: number, pages: number): string {
+	const color = COLORS[tile.tone ?? "info"];
+	const size = Math.min(valueSize(tile.value), 34);
+	const dots = Array.from({ length: pages }, (_, i) =>
+		`<circle cx="${100 - (pages - 1) * 6 + i * 12}" cy="86" r="3" fill="${i === page ? COLORS.text : COLORS.off}"/>`).join("");
+	const parts = [
+		`<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" viewBox="0 0 200 100">`,
+		`<rect width="200" height="100" fill="${COLORS.background}"/>`,
+		`<rect width="200" height="100" fill="${color}" opacity="0.07"/>`,
+		`<g transform="translate(8 6) scale(0.75)" fill="none" stroke="${color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="${ICONS[tile.icon]}"/></g>`,
+		`<text x="30" y="21" font-family="${FONT}" font-size="14" font-weight="600" fill="${COLORS.muted}">${escape(fit(tile.title, 14, 160))}</text>`,
+		`<text x="100" y="54" text-anchor="middle" font-family="${FONT}" font-size="${size}" font-weight="700" fill="${COLORS.text}">${escape(fit(tile.value, size, 184))}</text>`,
+		tile.detail ? `<text x="100" y="73" text-anchor="middle" font-family="${FONT}" font-size="13" fill="${COLORS.muted}">${escape(fit(tile.detail, 13, 188))}</text>` : "",
+		dots,
+		`<rect x="0" y="94" width="200" height="6" fill="${color}"/>`,
+		`</svg>`,
+	];
+	return "data:image/svg+xml;charset=utf8," + encodeURIComponent(parts.join(""));
+}

@@ -36,6 +36,11 @@ export abstract class MRadminAction<S extends JsonObject = JsonObject> extends S
 	/** What the key shows when connected; null = the player may not see it (key shows "no right"). */
 	protected abstract view(state: DeckState, settings: S): Tile | null;
 
+	/** What the key would show and open - for the dial of the Stream Deck +, which shows the keys one after the other. */
+	preview(state: DeckState, settings: S): { tile: Tile | null; page: string } {
+		return { tile: this.view(state, settings), page: this.page(state, settings) };
+	}
+
 	/** A press while connected - by default opens {@link page} in the browser. */
 	protected async pressed(action: Action<S>, state: DeckState, settings: S): Promise<void> {
 		await connection.open(this.page(state, settings));
@@ -89,7 +94,7 @@ export abstract class MRadminAction<S extends JsonObject = JsonObject> extends S
 			return { icon: "shield", title: t("setup.title"), value: t("noPermission.value"), tone: "off" };
 		}
 		const until = this.asked.get(id) ?? 0;
-		return until > Date.now() ? { ...tile, flash: true } : tile;
+		return until > Date.now() ? { ...tile, flash: true, detail: t("admin.ask") } : tile;
 	}
 
 	// --------------------------------------------------------- confirmation
