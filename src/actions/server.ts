@@ -16,7 +16,7 @@ export class ServerAction extends MRadminAction {
 		if (!server) {
 			return null;
 		}
-		const tile: Tile = { icon: "server", title: state.serverName || t("server.title"), value: `${server.online}/${server.max}`,
+		const tile: Tile = { icon: "server", title: t("server.title"), value: `${server.online}/${server.max}`,
 			detail: t("server.players"), tone: "good" };
 		const tps = state.team?.server?.tps?.[0];
 		if (tps !== undefined) {

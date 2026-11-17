@@ -19,6 +19,8 @@ const TEXTS = {
 		"status.setup": "Nicht verbunden",
 		"status.linking": "Wartet auf Bestätigung",
 		"status.ok": "Verbunden als {player}",
+		"mode.view": "nur anzeigen",
+		"mode.control": "darf schalten",
 		"status.offline": "Server nicht erreichbar",
 		"status.signed-out": "Abgemeldet - neu verbinden",
 		"status.no-permission": "Kein Recht (mradmin.deck)",
@@ -61,6 +63,8 @@ const TEXTS = {
 		"status.setup": "Not connected",
 		"status.linking": "Waiting for confirmation",
 		"status.ok": "Connected as {player}",
+		"mode.view": "view only",
+		"mode.control": "may switch",
 		"status.offline": "Server unreachable",
 		"status.signed-out": "Signed out - connect again",
 		"status.no-permission": "No permission (mradmin.deck)",
@@ -169,7 +173,8 @@ function show(s) {
 	fill(s.options);
 	const tone = s.status === "ok" ? "ok" : s.status === "linking" ? "warn" : s.status === "setup" ? "" : "bad";
 	$("status").className = "status " + tone;
-	$("status").textContent = t("status." + s.status, { player: s.player + (s.server ? " · " + s.server : "") });
+	$("status").textContent = t("status." + s.status, { player: s.player + (s.server ? " · " + s.server : "") })
+		+ (s.status === "ok" ? " · " + t(s.control ? "mode.control" : "mode.view") : "");
 	$("setup").hidden = !["setup", "signed-out", "off", "offline", "no-permission"].includes(s.status) || (s.status === "offline" && s.player);
 	$("linking").hidden = s.status !== "linking";
 	$("connected").hidden = !["ok", "offline", "no-permission"].includes(s.status) || !s.player;

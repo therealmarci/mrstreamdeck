@@ -158,70 +158,6 @@
 			]
 		},
 		{
-			"Name": "Performance",
-			"UUID": "at.marcelr.mradmin.performance",
-			"Icon": "imgs/actions/performance/icon",
-			"Tooltip": "TPS, tick time or RAM with the last ten minutes (team).",
-			"PropertyInspectorPath": "ui/settings.html",
-			"Controllers": [
-				"Keypad"
-			],
-			"States": [
-				{
-					"Image": "imgs/actions/performance/key",
-					"ShowTitle": false
-				}
-			]
-		},
-		{
-			"Name": "Warnings",
-			"UUID": "at.marcelr.mradmin.alerts",
-			"Icon": "imgs/actions/alerts/icon",
-			"Tooltip": "Everything that needs attention right now (team).",
-			"PropertyInspectorPath": "ui/settings.html",
-			"Controllers": [
-				"Keypad"
-			],
-			"States": [
-				{
-					"Image": "imgs/actions/alerts/key",
-					"ShowTitle": false
-				}
-			]
-		},
-		{
-			"Name": "Chunk loader warnings",
-			"UUID": "at.marcelr.mradmin.chunkwarnings",
-			"Icon": "imgs/actions/chunkwarnings/icon",
-			"Tooltip": "Locked, lag-disabled and conspicuous chunk loaders (team).",
-			"PropertyInspectorPath": "ui/settings.html",
-			"Controllers": [
-				"Keypad"
-			],
-			"States": [
-				{
-					"Image": "imgs/actions/chunkwarnings/key",
-					"ShowTitle": false
-				}
-			]
-		},
-		{
-			"Name": "Duels to review",
-			"UUID": "at.marcelr.mradmin.review",
-			"Icon": "imgs/actions/review/icon",
-			"Tooltip": "Duel rounds waiting for a review (team).",
-			"PropertyInspectorPath": "ui/settings.html",
-			"Controllers": [
-				"Keypad"
-			],
-			"States": [
-				{
-					"Image": "imgs/actions/review/key",
-					"ShowTitle": false
-				}
-			]
-		},
-		{
 			"Name": "Maintenance",
 			"UUID": "at.marcelr.mradmin.maintenance",
 			"Icon": "imgs/actions/maintenance/icon",
@@ -238,7 +174,87 @@
 			]
 		},
 		{
-			"Name": "Waiting room",
+			"Name": "Plugin key",
+			"UUID": "at.marcelr.mradmin.plugin",
+			"Icon": "imgs/actions/plugin/icon",
+			"Tooltip": "Any key a plugin offers.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/plugin/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Team: Performance",
+			"UUID": "at.marcelr.mradmin.performance",
+			"Icon": "imgs/actions/performance/icon",
+			"Tooltip": "TPS, tick time or RAM with the last ten minutes (team).",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/performance/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Team: Warnings",
+			"UUID": "at.marcelr.mradmin.alerts",
+			"Icon": "imgs/actions/alerts/icon",
+			"Tooltip": "Everything that needs attention right now (team).",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/alerts/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Team: Chunk loader warnings",
+			"UUID": "at.marcelr.mradmin.chunkwarnings",
+			"Icon": "imgs/actions/chunkwarnings/icon",
+			"Tooltip": "Locked, lag-disabled and conspicuous chunk loaders (team).",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/chunkwarnings/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Team: Duels to review",
+			"UUID": "at.marcelr.mradmin.review",
+			"Icon": "imgs/actions/review/icon",
+			"Tooltip": "Duel rounds waiting for a review (team).",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/review/key",
+					"ShowTitle": false
+				}
+			]
+		},
+		{
+			"Name": "Team: Waiting room",
 			"UUID": "at.marcelr.mradmin.waitroom",
 			"Icon": "imgs/actions/waitroom/icon",
 			"Tooltip": "State of the waiting room server (team).",
@@ -254,7 +270,7 @@
 			]
 		},
 		{
-			"Name": "Staff chat",
+			"Name": "Team: Staff chat",
 			"UUID": "at.marcelr.mradmin.staffchat",
 			"Icon": "imgs/actions/staffchat/icon",
 			"Tooltip": "New messages in the staff chat - press marks them as read (team).",
@@ -270,7 +286,7 @@
 			]
 		},
 		{
-			"Name": "Admin mode",
+			"Name": "Team: Admin mode",
 			"UUID": "at.marcelr.mradmin.adminmode",
 			"Icon": "imgs/actions/adminmode/icon",
 			"Tooltip": "Switch the admin mode on or off - press twice (team, in game).",
@@ -286,7 +302,7 @@
 			]
 		},
 		{
-			"Name": "Restart",
+			"Name": "Team: Restart",
 			"UUID": "at.marcelr.mradmin.restart",
 			"Icon": "imgs/actions/restart/icon",
 			"Tooltip": "Restart the server in 15, 30 or 60 minutes - press twice; while one runs, press twice cancels it (team).",
@@ -302,7 +318,7 @@
 			]
 		},
 		{
-			"Name": "Announcement",
+			"Name": "Team: Announcement",
 			"UUID": "at.marcelr.mradmin.announce",
 			"Icon": "imgs/actions/announce/icon",
 			"Tooltip": "Send an announcement template - press twice (team).",
@@ -313,22 +329,6 @@
 			"States": [
 				{
 					"Image": "imgs/actions/announce/key",
-					"ShowTitle": false
-				}
-			]
-		},
-		{
-			"Name": "Plugin key",
-			"UUID": "at.marcelr.mradmin.plugin",
-			"Icon": "imgs/actions/plugin/icon",
-			"Tooltip": "Any key a plugin offers.",
-			"PropertyInspectorPath": "ui/settings.html",
-			"Controllers": [
-				"Keypad"
-			],
-			"States": [
-				{
-					"Image": "imgs/actions/plugin/key",
 					"ShowTitle": false
 				}
 			]

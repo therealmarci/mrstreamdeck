@@ -1,6 +1,9 @@
 # Keys for the team
 
-Team keys show the same as the administration of the web interface - with the same permissions. As there, you need an **own sign-in** in the web interface (password, passkey or Discord); without it the keys show "No right".
+Team keys show the same as the administration of the web interface - with the same permissions. You also need **`mradmin.deck.team`** and, as in the administration, an **own sign-in** in the web interface (password, passkey or Discord); without them the keys show "No right". In the key list of the Stream Deck app they are at the bottom with **Team:** in front.
+
+> [!WARNING]
+> Keys with an effect (restart, admin mode, announcement) only work if the Stream Deck **may switch things** - see [Connecting](verbinden.md#view-only-or-also-switch). Every such action ends up in the log, in the Discord admin log and in the team's inbox.
 
 | Key | Shows | Press | Permission |
 |---|---|---|---|

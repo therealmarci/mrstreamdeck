@@ -10,5 +10,8 @@ Alle wichtigen Änderungen an MRstreamdeck.
 - **Taste Tickets:** offene Tickets des Servers (Team, ungelesene gelb) oder die eigenen Tickets (neue Antwort blau), einstellbar.
 - **Tasten für Spieler:** Posteingang (rot bei Absturz), nächster Neustart bzw. Wartung als Countdown, eine Spielstatistik nach Wahl, Schlafabstimmung, Chunkloader an/aus (MRchunks), letztes Duell bzw. Duell-Bilanz (MRpvp).
 - **Tasten fürs Team:** Leistung (TPS, Tick-Zeit oder RAM mit Kurve der letzten 10 Minuten), Warnungen, Chunkloader-Warnungen, Duelle zur Prüfung, Wartung, Warteraum, Staff-Chat (Drücken = gelesen), Admin-Modus, Neustart (15/30/60 min; läuft einer, bricht er ab) und Ankündigungsvorlage. Tasten mit Wirkung leuchten beim ersten Druck auf und brauchen einen zweiten innerhalb von 5 Sekunden.
+- **Spieler und Team getrennt:** Team-Tasten stehen in der Tastenliste unten mit „Team:“ davor.
+- **Nur anzeigen oder schalten:** Darf das Stream Deck nicht schalten (Freigabe beim Verbinden, änderbar unter Konto → Geräte), zeigen Tasten mit Wirkung „nur anzeigen“ und lehnen ab; die Einstellungen jeder Taste zeigen den Stand.
+- **Texte passen in die Tasten:** zu lange Texte werden erst kleiner, nur notfalls gekürzt.
 - **Plugin-Taste:** jede Taste, die ein Plugin über MRadmin anbietet - auch von künftigen Plugins.
 - **Überblick-Drehregler (Stream Deck +):** Drehen blättert durch Server, Leistung, Tickets, Warnungen, Posteingang und nächsten Neustart, Drücken öffnet die Seite im Browser.

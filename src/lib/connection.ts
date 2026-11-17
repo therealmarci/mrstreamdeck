@@ -19,7 +19,7 @@ export type DeckState = {
 	time: number;
 	url: string;
 	serverName: string;
-	me: { name: string; uuid: string; online: boolean; team: boolean };
+	me: { name: string; uuid: string; online: boolean; team: boolean; control: boolean };
 	server?: { online: number; max: number };
 	restart?: { at: number; restart: boolean; countdown: boolean; planned: boolean; reason: string };
 	maintenance?: { phase: string; title?: string; start?: number; end?: number };
@@ -42,6 +42,7 @@ export type DeckTile = {
 	link: string | null;
 	pressable: boolean;
 	confirm: boolean;
+	team?: boolean;
 };
 
 export type TeamState = {

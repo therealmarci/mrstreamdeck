@@ -37,7 +37,8 @@ abstract class PluginTileAction extends MRadminAction<Settings> {
 			}
 			return { icon: this.icon, title: this.empty, value: "–", detail: t("tile.none"), tone: "off" };
 		}
-		return { icon: ICONS[tile.module] ?? this.icon, title: tile.title, value: tile.value, detail: tile.detail, tone: tone(tile.tone) };
+		const shown: Tile = { icon: ICONS[tile.module] ?? this.icon, title: tile.title, value: tile.value, detail: tile.detail, tone: tone(tile.tone) };
+		return tile.pressable && !this.mayControl(state) ? this.viewOnly(shown) : shown;
 	}
 
 	protected override async pressed(action: Action<Settings>, state: DeckState, settings: Settings): Promise<void> {
@@ -50,6 +51,10 @@ abstract class PluginTileAction extends MRadminAction<Settings> {
 		}
 		if (!tile.pressable) {
 			await super.pressed(action, state, settings);
+			return;
+		}
+		if (!this.mayControl(state)) {
+			await this.refuse(action);
 			return;
 		}
 		if (tile.confirm && !this.confirm(action, settings)) {

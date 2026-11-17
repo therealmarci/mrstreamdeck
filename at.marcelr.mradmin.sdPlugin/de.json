@@ -35,19 +35,19 @@
 		"Tooltip": "Dein letztes Duell oder deine Duell-Bilanz."
 	},
 	"at.marcelr.mradmin.performance": {
-		"Name": "Leistung",
+		"Name": "Team: Leistung",
 		"Tooltip": "TPS, Tick-Zeit oder RAM mit den letzten zehn Minuten (Team)."
 	},
 	"at.marcelr.mradmin.alerts": {
-		"Name": "Warnungen",
+		"Name": "Team: Warnungen",
 		"Tooltip": "Alles, was gerade Aufmerksamkeit braucht (Team)."
 	},
 	"at.marcelr.mradmin.chunkwarnings": {
-		"Name": "Chunkloader-Warnungen",
+		"Name": "Team: Chunkloader-Warnungen",
 		"Tooltip": "Gesperrte, durch Lags abgeschaltete und auffällige Chunkloader (Team)."
 	},
 	"at.marcelr.mradmin.review": {
-		"Name": "Duelle zur Prüfung",
+		"Name": "Team: Duelle zur Prüfung",
 		"Tooltip": "Duell-Runden, die auf eine Prüfung warten (Team)."
 	},
 	"at.marcelr.mradmin.maintenance": {
@@ -55,23 +55,23 @@
 		"Tooltip": "Laufende oder nächste Wartung."
 	},
 	"at.marcelr.mradmin.waitroom": {
-		"Name": "Warteraum",
+		"Name": "Team: Warteraum",
 		"Tooltip": "Zustand des Warteraum-Servers (Team)."
 	},
 	"at.marcelr.mradmin.staffchat": {
-		"Name": "Staff-Chat",
+		"Name": "Team: Staff-Chat",
 		"Tooltip": "Neue Nachrichten im Staff-Chat - Drücken markiert sie als gelesen (Team)."
 	},
 	"at.marcelr.mradmin.adminmode": {
-		"Name": "Admin-Modus",
+		"Name": "Team: Admin-Modus",
 		"Tooltip": "Admin-Modus an- oder ausschalten - zweimal drücken (Team, im Spiel)."
 	},
 	"at.marcelr.mradmin.restart": {
-		"Name": "Neustart",
+		"Name": "Team: Neustart",
 		"Tooltip": "Server in 15, 30 oder 60 Minuten neu starten - zweimal drücken; läuft einer, bricht zweimal Drücken ihn ab (Team)."
 	},
 	"at.marcelr.mradmin.announce": {
-		"Name": "Ankündigung",
+		"Name": "Team: Ankündigung",
 		"Tooltip": "Ankündigungsvorlage senden - zweimal drücken (Team)."
 	},
 	"at.marcelr.mradmin.plugin": {

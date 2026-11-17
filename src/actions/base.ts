@@ -120,6 +120,26 @@ export abstract class MRadminAction<S extends JsonObject = JsonObject> extends S
 		return false;
 	}
 
+	/**
+	 * May this Stream Deck switch things? Chosen by the player when connecting it (view only otherwise) - MRadmin
+	 * refuses presses with an effect anyway, the key only says so right away.
+	 */
+	protected mayControl(state: DeckState): boolean {
+		return state.me.control === true;
+	}
+
+	/** A key with an effect on a view-only Stream Deck: the same key, "view only" below. */
+	protected viewOnly(tile: Tile): Tile {
+		return { ...tile, detail: t("viewOnly") };
+	}
+
+	/** Refuses a press with a warning triangle. */
+	protected async refuse(action: Action<S>): Promise<void> {
+		if (action.isKey()) {
+			await action.showAlert();
+		}
+	}
+
 	/** Runs a press at MRadmin and shows the result (tick or warning triangle). */
 	protected async act(action: Action<S>, body: Record<string, unknown>): Promise<void> {
 		const refused = await connection.press(body);
@@ -219,6 +239,7 @@ export abstract class MRadminAction<S extends JsonObject = JsonObject> extends S
 				player: connection.settings.player ?? "",
 				server: connection.state?.serverName ?? "",
 				team: connection.state?.me.team ?? false,
+				control: connection.state?.me.control ?? false,
 				code: connection.link?.code ?? "",
 				linkUrl: connection.link?.url ?? "",
 				error: connection.lastError,

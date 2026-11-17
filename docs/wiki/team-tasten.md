@@ -1,6 +1,9 @@
 # Tasten fürs Team
 
-Team-Tasten zeigen dasselbe wie die Verwaltung der Weboberfläche - mit denselben Rechten. Wie dort brauchst du dafür eine **eigene Anmeldung** in der Weboberfläche (Passwort, Passkey oder Discord); ohne sie zeigen die Tasten „Kein Recht“.
+Team-Tasten zeigen dasselbe wie die Verwaltung der Weboberfläche - mit denselben Rechten. Dazu brauchst du **`mradmin.deck.team`** und wie in der Verwaltung eine **eigene Anmeldung** in der Weboberfläche (Passwort, Passkey oder Discord); ohne sie zeigen die Tasten „Kein Recht“. In der Tastenliste der Stream-Deck-App stehen sie unten mit **Team:** davor.
+
+> [!WARNING]
+> Tasten mit Wirkung (Neustart, Admin-Modus, Ankündigung) gehen nur, wenn das Stream Deck **schalten darf** - siehe [Verbinden](verbinden.md#nur-anzeigen-oder-auch-schalten). Jede solche Aktion landet im Protokoll, im Discord-Admin-Log und im Posteingang des Teams.
 
 | Taste | Zeigt | Drücken | Recht |
 |---|---|---|---|

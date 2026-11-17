@@ -60,14 +60,28 @@ function escape(text: string): string {
 }
 
 /** Cuts a text to fit (rough width per character at that size). */
-function fit(text: string, size: number, width: number): string {
-	const max = Math.floor(width / (size * 0.56));
-	return text.length > max ? text.slice(0, Math.max(1, max - 1)) + "…" : text;
+/** Rough width of a text in pixels (Segoe UI and similar; bold a little wider) - to fit it before drawing. */
+function measure(text: string, size: number, bold = false): number {
+	let units = 0;
+	for (const c of text) {
+		units += "iIl.,:;!|'1 ()[]·".includes(c) ? 0.3 : "mwMW%".includes(c) ? 0.88
+			: c >= "A" && c <= "Z" || "ÄÖÜ".includes(c) ? 0.66 : c >= "0" && c <= "9" ? 0.56 : 0.52;
+	}
+	return units * size * (bold ? 1.08 : 1);
 }
 
-function valueSize(value: string): number {
-	const n = value.length;
-	return n <= 3 ? 46 : n <= 5 ? 38 : n <= 7 ? 30 : n <= 9 ? 24 : 20;
+/** The text at the biggest size from max down to min that fits; if even min is too wide, cut with "…". */
+function fit(text: string, max: number, min: number, width: number, bold = false): { text: string; size: number } {
+	for (let size = max; size >= min; size--) {
+		if (measure(text, size, bold) <= width) {
+			return { text, size };
+		}
+	}
+	let cut = text;
+	while (cut.length > 1 && measure(cut + "…", min, bold) > width) {
+		cut = cut.slice(0, -1);
+	}
+	return { text: cut.trimEnd() + "…", size: min };
 }
 
 /** Normalises a tone given by MRadmin or a module ("good", "warn", "bad", "off", others = info). */
@@ -91,8 +105,9 @@ function curve(values: number[], x: number, y: number, w: number, h: number, col
 /** The key as an SVG data URL for setImage. */
 export function render(tile: Tile): string {
 	const color = COLORS[tile.tone ?? "info"];
-	const value = fit(tile.value, valueSize(tile.value), 128);
-	const size = valueSize(tile.value);
+	const value = fit(tile.value, 46, 18, 130, true);
+	const title = fit(tile.title, 17, 13, 98, true);
+	const detail = fit(tile.detail ?? "", 15, 11, 134);
 	const chart = tile.chart && tile.chart.length > 1;
 	const valueY = chart ? 74 : 86;
 	const parts = [
@@ -100,11 +115,11 @@ export function render(tile: Tile): string {
 		`<rect width="144" height="144" fill="${tile.flash ? color : COLORS.background}"/>`,
 		tile.flash ? "" : `<rect x="0" y="0" width="144" height="144" fill="${color}" opacity="0.07"/>`,
 		`<g transform="translate(10 10) scale(0.92)" fill="none" stroke="${tile.flash ? COLORS.background : color}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="${ICONS[tile.icon]}"/></g>`,
-		`<text x="40" y="29" font-family="${FONT}" font-size="17" font-weight="600" fill="${tile.flash ? COLORS.background : COLORS.muted}">${escape(fit(tile.title, 17, 98))}</text>`,
-		`<text x="72" y="${valueY}" text-anchor="middle" font-family="${FONT}" font-size="${size}" font-weight="700" fill="${tile.flash ? COLORS.background : COLORS.text}">${escape(value)}</text>`,
+		`<text x="40" y="29" font-family="${FONT}" font-size="${title.size}" font-weight="600" fill="${tile.flash ? COLORS.background : COLORS.muted}">${escape(title.text)}</text>`,
+		`<text x="72" y="${valueY}" text-anchor="middle" font-family="${FONT}" font-size="${value.size}" font-weight="700" fill="${tile.flash ? COLORS.background : COLORS.text}">${escape(value.text)}</text>`,
 		chart ? curve(tile.chart!, 14, 86, 116, 22, color) : "",
 		tile.detail
-			? `<text x="72" y="${chart ? 125 : 116}" text-anchor="middle" font-family="${FONT}" font-size="15" fill="${tile.flash ? COLORS.background : COLORS.muted}">${escape(fit(tile.detail, 15, 132))}</text>`
+			? `<text x="72" y="${chart ? 125 : 116}" text-anchor="middle" font-family="${FONT}" font-size="${detail.size}" fill="${tile.flash ? COLORS.background : COLORS.muted}">${escape(detail.text)}</text>`
 			: "",
 		tile.flash ? "" : `<rect x="0" y="134" width="144" height="10" fill="${color}"/>`,
 		`</svg>`,
@@ -118,7 +133,9 @@ export function render(tile: Tile): string {
  */
 export function renderDial(tile: Tile, page: number, pages: number): string {
 	const color = COLORS[tile.tone ?? "info"];
-	const size = Math.min(valueSize(tile.value), 34);
+	const value = fit(tile.value, 34, 16, 186, true);
+	const title = fit(tile.title, 14, 11, 162, true);
+	const detail = fit(tile.detail ?? "", 13, 10, 190);
 	const dots = Array.from({ length: pages }, (_, i) =>
 		`<circle cx="${100 - (pages - 1) * 6 + i * 12}" cy="86" r="3" fill="${i === page ? COLORS.text : COLORS.off}"/>`).join("");
 	const parts = [
@@ -126,9 +143,9 @@ export function renderDial(tile: Tile, page: number, pages: number): string {
 		`<rect width="200" height="100" fill="${COLORS.background}"/>`,
 		`<rect width="200" height="100" fill="${color}" opacity="0.07"/>`,
 		`<g transform="translate(8 6) scale(0.75)" fill="none" stroke="${color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="${ICONS[tile.icon]}"/></g>`,
-		`<text x="30" y="21" font-family="${FONT}" font-size="14" font-weight="600" fill="${COLORS.muted}">${escape(fit(tile.title, 14, 160))}</text>`,
-		`<text x="100" y="54" text-anchor="middle" font-family="${FONT}" font-size="${size}" font-weight="700" fill="${COLORS.text}">${escape(fit(tile.value, size, 184))}</text>`,
-		tile.detail ? `<text x="100" y="73" text-anchor="middle" font-family="${FONT}" font-size="13" fill="${COLORS.muted}">${escape(fit(tile.detail, 13, 188))}</text>` : "",
+		`<text x="30" y="21" font-family="${FONT}" font-size="${title.size}" font-weight="600" fill="${COLORS.muted}">${escape(title.text)}</text>`,
+		`<text x="100" y="54" text-anchor="middle" font-family="${FONT}" font-size="${value.size}" font-weight="700" fill="${COLORS.text}">${escape(value.text)}</text>`,
+		tile.detail ? `<text x="100" y="73" text-anchor="middle" font-family="${FONT}" font-size="${detail.size}" fill="${COLORS.muted}">${escape(detail.text)}</text>` : "",
 		dots,
 		`<rect x="0" y="94" width="200" height="6" fill="${color}"/>`,
 		`</svg>`,

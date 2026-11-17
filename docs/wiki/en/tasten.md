@@ -10,7 +10,7 @@ Every key shows a symbol and a title at the top, the value in the middle and a c
 | **Tickets** | your open tickets, blue on a new answer | your tickets |
 | **Statistics** | one of your game statistics - which one, you choose in the settings of the key | statistics page |
 | **Sleep vote** | at night: how many sleep / how many are needed (in your world) | start page |
-| **Chunk loader** | state of one of your chunk loaders (on, off, locked …) and its size | **switches it on or off** |
+| **Chunk loader** | state of one of your chunk loaders (on, off, locked …) and its size | **switches it on or off** (only if the Stream Deck [may switch](verbinden.md#view-only-or-also-switch)) |
 | **Duel** | your last duel (win, loss, opponent, kit) or your record | your duels |
 | **Plugin key** | any key a plugin offers - also of later plugins | depends on the key |
 

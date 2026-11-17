@@ -10,7 +10,7 @@ Jede Taste zeigt oben ein Symbol und einen Titel, in der Mitte den Wert und unte
 | **Tickets** | deine offenen Tickets, blau bei einer neuen Antwort | deine Tickets |
 | **Statistik** | eine deiner Spielstatistiken - welche, wählst du in den Einstellungen der Taste | Statistik-Seite |
 | **Schlafabstimmung** | nachts: wie viele schlafen / wie viele nötig sind (in deiner Welt) | Startseite |
-| **Chunkloader** | Zustand eines deiner Chunkloader (an, aus, gesperrt …) und seine Größe | **schaltet ihn an oder aus** |
+| **Chunkloader** | Zustand eines deiner Chunkloader (an, aus, gesperrt …) und seine Größe | **schaltet ihn an oder aus** (nur wenn das Stream Deck [schalten darf](verbinden.md#nur-anzeigen-oder-auch-schalten)) |
 | **Duell** | dein letztes Duell (Sieg, Niederlage, Gegner, Kit) oder deine Bilanz | deine Duelle |
 | **Plugin-Taste** | jede Taste, die ein Plugin anbietet - auch von späteren Plugins | je nach Taste |
 

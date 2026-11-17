@@ -130,15 +130,14 @@ export class AdminModeAction extends MRadminAction {
 		if (!mode.online) {
 			return { icon: "shield", title: t("admin.title"), value: "–", detail: t("admin.offline"), tone: "off" };
 		}
-		return { icon: "shield", title: t("admin.title"), value: t(mode.active ? "admin.on" : "admin.off"),
+		const tile: Tile = { icon: "shield", title: t("admin.title"), value: t(mode.active ? "admin.on" : "admin.off"),
 			tone: mode.active ? "good" : "off" };
+		return this.mayControl(state) ? tile : this.viewOnly(tile);
 	}
 
 	protected override async pressed(action: Action<{}>, state: DeckState): Promise<void> {
-		if (!state.team?.adminMode?.online) {
-			if (action.isKey()) {
-				await action.showAlert();
-			}
+		if (!state.team?.adminMode?.online || !this.mayControl(state)) {
+			await this.refuse(action);
 			return;
 		}
 		if (this.confirm(action, {})) {
@@ -171,15 +170,14 @@ export class RestartAction extends MRadminAction<RestartSettings> {
 			return { icon: "power", title: t("restart.title"), value: "–", detail: t("restart.disabled"), tone: "off" };
 		}
 		const minutes = this.minutes(state, settings);
-		return { icon: "power", title: t("restart.title"), value: `${minutes} min`, detail: t("restart.twice"), tone: "info" };
+		const tile: Tile = { icon: "power", title: t("restart.title"), value: `${minutes} min`, detail: t("restart.twice"), tone: "info" };
+		return this.mayControl(state) ? tile : this.viewOnly(tile);
 	}
 
 	protected override async pressed(action: Action<RestartSettings>, state: DeckState, settings: RestartSettings): Promise<void> {
 		const control = state.team?.restartControl;
-		if (!control || (!state.restart?.countdown && (!control.enabled || control.roomRestarting))) {
-			if (action.isKey()) {
-				await action.showAlert();
-			}
+		if (!control || !this.mayControl(state) || (!state.restart?.countdown && (!control.enabled || control.roomRestarting))) {
+			await this.refuse(action);
 			return;
 		}
 		if (!this.confirm(action, settings)) {
@@ -206,16 +204,15 @@ export class AnnounceAction extends MRadminAction<{ preset?: string }> {
 			return null;
 		}
 		const preset = list.find((p) => p.name === settings.preset && !p.values);
-		return { icon: "megaphone", title: t("announce.title"), value: preset ? preset.name : "–",
+		const tile: Tile = { icon: "megaphone", title: t("announce.title"), value: preset ? preset.name : "–",
 			detail: preset ? "" : t("announce.choose"), tone: preset ? "info" : "off" };
+		return preset && !this.mayControl(state) ? this.viewOnly(tile) : tile;
 	}
 
 	protected override async pressed(action: Action<{ preset?: string }>, state: DeckState, settings: { preset?: string }): Promise<void> {
 		const ok = state.team?.announce?.some((p) => p.name === settings.preset && !p.values);
-		if (!ok) {
-			if (action.isKey()) {
-				await action.showAlert();
-			}
+		if (!ok || !this.mayControl(state)) {
+			await this.refuse(action);
 			return;
 		}
 		if (this.confirm(action, settings)) {
