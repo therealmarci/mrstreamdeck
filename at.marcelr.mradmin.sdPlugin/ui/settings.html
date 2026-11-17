@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>MRadmin</title>
+	<link rel="stylesheet" href="settings.css" />
+</head>
+<body>
+	<!-- Connection: the same for every key (the plugin keeps one connection). -->
+	<section id="connection">
+		<div class="item">
+			<span class="label" data-t="connection"></span>
+			<div class="value"><span id="status" class="status"></span></div>
+		</div>
+
+		<div id="setup" hidden>
+			<div class="item">
+				<label class="label" for="url" data-t="address"></label>
+				<div class="value"><input id="url" type="text" placeholder="https://admin.example.org" spellcheck="false" /></div>
+			</div>
+			<div class="item">
+				<label class="label" for="name" data-t="name"></label>
+				<div class="value"><input id="name" type="text" maxlength="40" /></div>
+			</div>
+			<div class="item">
+				<span class="label"></span>
+				<div class="value"><button id="connect" data-t="connectCode"></button></div>
+			</div>
+			<details>
+				<summary data-t="withKey"></summary>
+				<div class="item">
+					<label class="label" for="key" data-t="key"></label>
+					<div class="value"><input id="key" type="password" placeholder="mrd_…" spellcheck="false" autocomplete="off" /></div>
+				</div>
+				<div class="item">
+					<span class="label"></span>
+					<div class="value"><button id="useKey" data-t="connectKey"></button></div>
+				</div>
+				<p class="hint" data-t="keyHint"></p>
+			</details>
+		</div>
+
+		<div id="linking" hidden>
+			<div class="code" id="code"></div>
+			<p class="hint" id="linkHint"></p>
+			<div class="item">
+				<span class="label"></span>
+				<div class="value row">
+					<button id="openLink" data-t="openBrowser"></button>
+					<button id="cancel" class="secondary" data-t="cancel"></button>
+				</div>
+			</div>
+		</div>
+
+		<div id="connected" hidden>
+			<div class="item">
+				<span class="label"></span>
+				<div class="value"><button id="disconnect" class="secondary" data-t="disconnect"></button></div>
+			</div>
+		</div>
+		<p class="error" id="error" hidden></p>
+	</section>
+
+	<!-- Settings of this key - only the block of the action is shown. -->
+	<section class="key" data-action="at.marcelr.mradmin.tickets" hidden>
+		<div class="item">
+			<label class="label" for="mode" data-t="ticketsMode"></label>
+			<div class="value">
+				<select id="mode" data-setting="mode">
+					<option value="auto" data-t="modeAuto"></option>
+					<option value="team" data-t="modeTeam"></option>
+					<option value="mine" data-t="modeMine"></option>
+				</select>
+			</div>
+		</div>
+	</section>
+
+	<script src="settings.js"></script>
+</body>
+</html>

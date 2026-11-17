@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+	"Name": "MRadmin",
+	"Version": "0.1.0.0",
+	"Author": "MRtechnology",
+	"Description": "Your Minecraft server on your keys: players online, tickets, chunk loaders, duels, restarts and more - for players and the team of servers with MRadmin.",
+	"URL": "https://mrtechnology.marcelr.at/wiki/mrstreamdeck/",
+	"Category": "MRadmin",
+	"CategoryIcon": "imgs/plugin/category-icon",
+	"Icon": "imgs/plugin/marketplace",
+	"CodePath": "bin/plugin.js",
+	"SDKVersion": 3,
+	"Software": { "MinimumVersion": "7.1" },
+	"OS": [
+		{ "Platform": "mac", "MinimumVersion": "12" },
+		{ "Platform": "windows", "MinimumVersion": "10" }
+	],
+	"Nodejs": { "Version": "24", "Debug": "disabled" },
+	"UUID": "at.marcelr.mradmin",
+	"Actions": [
+		{
+			"Name": "Server overview",
+			"UUID": "at.marcelr.mradmin.server",
+			"Icon": "imgs/actions/server/icon",
+			"Tooltip": "Players online, restarts and maintenance - for the team also the TPS.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/server/key", "ShowTitle": false }]
+		},
+		{
+			"Name": "Tickets",
+			"UUID": "at.marcelr.mradmin.tickets",
+			"Icon": "imgs/actions/tickets/icon",
+			"Tooltip": "Open tickets of the server (team) or your own tickets.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "imgs/actions/tickets/key", "ShowTitle": false }]
+		}
+	]
+}

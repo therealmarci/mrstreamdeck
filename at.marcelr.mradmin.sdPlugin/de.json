@@ -1,0 +1,14 @@
+{
+	"Name": "MRadmin",
+	"Description": "Dein Minecraft-Server auf deinen Tasten: Spieler online, Tickets, Chunkloader, Duelle, Neustarts und mehr - für Spieler und das Team von Servern mit MRadmin.",
+	"Category": "MRadmin",
+	"at.marcelr.mradmin.server": {
+		"Name": "Server-Übersicht",
+		"Tooltip": "Spieler online, Neustarts und Wartung - fürs Team auch die TPS."
+	},
+	"at.marcelr.mradmin.tickets": {
+		"Name": "Tickets",
+		"Tooltip": "Offene Tickets des Servers (Team) oder deine eigenen Tickets."
+	},
+	"Localization": {}
+}
