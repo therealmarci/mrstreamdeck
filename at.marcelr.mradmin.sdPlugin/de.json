@@ -82,5 +82,21 @@
 		"Name": "Überblick-Drehregler",
 		"Tooltip": "Stream Deck +: durch Server, Leistung, Tickets, Warnungen, Posteingang und nächsten Neustart drehen; Drücken öffnet es."
 	},
+	"at.marcelr.mradmin.dial-players": {
+		"Name": "Spieler online (Drehregler)",
+		"Tooltip": "Stream Deck +: Spieler online mit Köpfen, drehen scrollt; Drücken öffnet die Weboberfläche."
+	},
+	"at.marcelr.mradmin.dial-chunkloader": {
+		"Name": "Chunkloader (Drehregler)",
+		"Tooltip": "Stream Deck +: durch deine Chunkloader drehen, Drücken schaltet den gezeigten."
+	},
+	"at.marcelr.mradmin.dial-performance": {
+		"Name": "Team: Leistung live (Drehregler)",
+		"Tooltip": "Stream Deck +: breite Kurve von TPS, Tick-Zeit oder RAM (drehen wechselt) der letzten zehn Minuten."
+	},
+	"at.marcelr.mradmin.dial-restart": {
+		"Name": "Team: Neustart (Drehregler)",
+		"Tooltip": "Stream Deck +: drehen wählt den Countdown, zweimal drücken startet; läuft einer, bricht zweimal Drücken ihn ab."
+	},
 	"Localization": {}
 }

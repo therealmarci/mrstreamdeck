@@ -20,4 +20,12 @@ Jede Taste zeigt oben ein Symbol und einen Titel, in der Mitte den Wert und unte
 Chunkloader-, Duell- und Schlaf-Tasten gibt es nur, wenn der Server MRchunks, MRpvp bzw. MRsleep hat.
 
 ## Stream Deck +
-Der **Überblick-Drehregler** zeigt Server, Leistung (Team), Tickets, Warnungen (Team), Posteingang und den nächsten Neustart. **Drehen** blättert, **Drücken** oder **Tippen** öffnet die Seite im Browser. Es erscheinen nur die Seiten, die du sehen darfst.
+Auf dem Stream Deck + nutzen die Drehregler das Display darüber:
+
+| Drehregler | Display | Drehen | Drücken / Tippen |
+|---|---|---|---|
+| **Überblick** | Server, Leistung (Team), Tickets, Warnungen (Team), Posteingang, nächster Neustart | blättert | öffnet die Seite im Browser |
+| **Spieler online** | bis zu drei Spieler mit Kopf (Team: mit Ping und Welt), oben wie viele online sind | scrollt | öffnet die Weboberfläche |
+| **Chunkloader** | Name, Zustand und Größe eines deiner Chunkloader | blättert durch deine Chunkloader | **schaltet ihn an oder aus** (nur wenn das Stream Deck [schalten darf](verbinden.md#nur-anzeigen-oder-auch-schalten)) |
+
+Fürs Team gibt es zusätzlich **Leistung live** und **Neustart** als Drehregler - siehe [Tasten fürs Team](team-tasten.md#stream-deck-).

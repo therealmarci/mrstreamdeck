@@ -29,3 +29,9 @@ Keys with an effect light up in their colour on the first press ("Press again").
 
 ## Announcement
 Only own templates without values to fill in (made under **Content → Announcements**). Discord gets them if the template says so.
+
+## Stream Deck +
+| Dial | Display | Turn | Press / tap |
+|---|---|---|---|
+| **Team: Performance live** | wide curve of the last 10 minutes with the current value | switches TPS, tick time, RAM | opens the performance page |
+| **Team: Restart** | chosen countdown time; while one runs, the time left as a bar | chooses 15, 30 or 60 minutes | **twice: start or cancel** |

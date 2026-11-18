@@ -1,5 +1,6 @@
 import streamDeck from "@elgato/streamdeck";
 import { OverviewDialAction } from "./actions/dial";
+import { ChunkloaderDial, PerformanceDial, PlayersDial, RestartDial } from "./actions/dials";
 import { CountdownAction, InboxAction, SleepAction, StatsAction } from "./actions/player";
 import { ChunkloaderAction, ChunkWarningsAction, DuelAction, PluginAction, ReviewAction } from "./actions/plugins";
 import { ServerAction } from "./actions/server";
@@ -27,7 +28,7 @@ for (const action of [
 	new PerformanceAction(), new AlertsAction(), new ChunkWarningsAction(), new ReviewAction(), new MaintenanceAction(),
 	new WaitroomAction(), new StaffChatAction(), new AdminModeAction(), new RestartAction(), new AnnounceAction(),
 	// any plugin, the dial of the Stream Deck +
-	new PluginAction(), new OverviewDialAction(),
+	new PluginAction(), new OverviewDialAction(), new PlayersDial(), new ChunkloaderDial(), new PerformanceDial(), new RestartDial(),
 ]) {
 	streamDeck.actions.registerAction(action);
 }

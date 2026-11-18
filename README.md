@@ -15,7 +15,7 @@
 ## Was kann MRstreamdeck?
 - **Für Spieler:** Server-Übersicht, Tickets, Posteingang, nächster Neustart, Statistik, Schlafabstimmung, Chunkloader an/aus, letztes Duell
 - **Fürs Team:** Leistung mit Kurve, Warnungen, Chunkloader-Warnungen, Duelle zur Prüfung, Wartung, Warteraum, Staff-Chat, Admin-Modus, Neustart, Ankündigung
-- **Stream Deck +:** Überblick auf dem Drehregler
+- **Stream Deck +:** Drehregler für Überblick, Spieler online, Chunkloader, Leistung live und Neustart
 
 ## Schnellstart
 1. Plugin installieren (Doppelklick auf die `.streamDeckPlugin`-Datei).

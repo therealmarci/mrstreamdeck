@@ -355,6 +355,98 @@
 					"Image": "imgs/actions/dial/key"
 				}
 			]
+		},
+		{
+			"Name": "Players online (dial)",
+			"UUID": "at.marcelr.mradmin.dial-players",
+			"Icon": "imgs/actions/dial-players/icon",
+			"Tooltip": "Stream Deck +: players online with heads, turn to scroll; press opens the web interface.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Encoder"
+			],
+			"Encoder": {
+				"layout": "layouts/dial.json",
+				"TriggerDescription": {
+					"Rotate": "Next / previous",
+					"Push": "Open in the browser",
+					"Touch": "Open in the browser"
+				}
+			},
+			"States": [
+				{
+					"Image": "imgs/actions/dial-players/key"
+				}
+			]
+		},
+		{
+			"Name": "Chunk loader (dial)",
+			"UUID": "at.marcelr.mradmin.dial-chunkloader",
+			"Icon": "imgs/actions/dial-chunkloader/icon",
+			"Tooltip": "Stream Deck +: turn through your chunk loaders, press switches the one shown.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Encoder"
+			],
+			"Encoder": {
+				"layout": "layouts/dial.json",
+				"TriggerDescription": {
+					"Rotate": "Next / previous",
+					"Push": "Switch on/off",
+					"Touch": "Switch on/off"
+				}
+			},
+			"States": [
+				{
+					"Image": "imgs/actions/dial-chunkloader/key"
+				}
+			]
+		},
+		{
+			"Name": "Team: Performance live (dial)",
+			"UUID": "at.marcelr.mradmin.dial-performance",
+			"Icon": "imgs/actions/dial-performance/icon",
+			"Tooltip": "Stream Deck +: wide curve of TPS, tick time or RAM (turn to switch) of the last ten minutes.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Encoder"
+			],
+			"Encoder": {
+				"layout": "layouts/dial.json",
+				"TriggerDescription": {
+					"Rotate": "TPS / tick time / RAM",
+					"Push": "Open in the browser",
+					"Touch": "Open in the browser"
+				}
+			},
+			"States": [
+				{
+					"Image": "imgs/actions/dial-performance/key"
+				}
+			]
+		},
+		{
+			"Name": "Team: Restart (dial)",
+			"UUID": "at.marcelr.mradmin.dial-restart",
+			"Icon": "imgs/actions/dial-restart/icon",
+			"Tooltip": "Stream Deck +: turn to choose the countdown, press twice to start; while one runs, press twice to cancel.",
+			"PropertyInspectorPath": "ui/settings.html",
+			"Controllers": [
+				"Encoder"
+			],
+			"Encoder": {
+				"layout": "layouts/dial.json",
+				"TriggerDescription": {
+					"Rotate": "Choose the countdown",
+					"Push": "Start / cancel (twice)",
+					"Touch": "Start / cancel (twice)"
+				}
+			},
+			"States": [
+				{
+					"Image": "imgs/actions/dial-restart/key"
+				}
+			]
 		}
 	]
 }

@@ -20,4 +20,12 @@ Every key shows a symbol and a title at the top, the value in the middle and a c
 Chunk loader, duel and sleep keys only exist when the server has MRchunks, MRpvp or MRsleep.
 
 ## Stream Deck +
-The **overview dial** shows server, performance (team), tickets, warnings (team), inbox and the next restart. **Turning** goes through them, **pressing** or **tapping** opens the page in the browser. Only the pages you may see appear.
+On the Stream Deck + the dials use the display above them:
+
+| Dial | Display | Turn | Press / tap |
+|---|---|---|---|
+| **Overview** | server, performance (team), tickets, warnings (team), inbox, next restart | goes through them | opens the page in the browser |
+| **Players online** | up to three players with their head (team: with ping and world), how many are online at the top | scrolls | opens the web interface |
+| **Chunk loader** | name, state and size of one of your chunk loaders | goes through your chunk loaders | **switches it on or off** (only if the Stream Deck [may switch](verbinden.md#view-only-or-also-switch)) |
+
+The team also has **Performance live** and **Restart** as dials - see [Keys for the team](team-tasten.md#stream-deck-).

@@ -29,7 +29,7 @@ const ICONS = {
 };
 
 /** action id -> symbol */
-const ACTIONS = {"server":"server","tickets":"ticket","inbox":"mail","countdown":"clock","stats":"chart","sleep":"moon","chunkloader":"grid","duel":"swords","performance":"pulse","alerts":"alert","chunkwarnings":"grid","review":"swords","maintenance":"tool","waitroom":"users","staffchat":"chat","adminmode":"shield","restart":"power","announce":"megaphone","plugin":"box","dial":"pulse"};
+const ACTIONS = {"server":"server","tickets":"ticket","inbox":"mail","countdown":"clock","stats":"chart","sleep":"moon","chunkloader":"grid","duel":"swords","performance":"pulse","alerts":"alert","chunkwarnings":"grid","review":"swords","maintenance":"tool","waitroom":"users","staffchat":"chat","adminmode":"shield","restart":"power","announce":"megaphone","plugin":"box","dial":"pulse","dial-players":"users","dial-chunkloader":"grid","dial-performance":"pulse","dial-restart":"power"};
 
 function png(svg, size, file) {
 	const data = new Resvg(svg, { fitTo: { mode: "width", value: size }, background: "rgba(0,0,0,0)" }).render().asPng();

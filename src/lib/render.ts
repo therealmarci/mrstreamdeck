@@ -30,7 +30,7 @@ export type Icon = keyof typeof ICONS;
 export type Tone = "good" | "warn" | "bad" | "off" | "info";
 
 /** The colours of MRadmin's dark theme: one accent (hue 210), colour only for states. */
-const COLORS = {
+export const COLORS = {
 	background: "#14171c",
 	text: "#f1f3f6",
 	muted: "#9aa3b2",
@@ -53,9 +53,9 @@ export type Tile = {
 	flash?: boolean;
 };
 
-const FONT = "'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif";
+export const FONT = "'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif";
 
-function escape(text: string): string {
+export function escape(text: string): string {
 	return text.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;" })[c]!);
 }
 
@@ -71,7 +71,7 @@ function measure(text: string, size: number, bold = false): number {
 }
 
 /** The text at the biggest size from max down to min that fits; if even min is too wide, cut with "…". */
-function fit(text: string, max: number, min: number, width: number, bold = false): { text: string; size: number } {
+export function fit(text: string, max: number, min: number, width: number, bold = false): { text: string; size: number } {
 	for (let size = max; size >= min; size--) {
 		if (measure(text, size, bold) <= width) {
 			return { text, size };

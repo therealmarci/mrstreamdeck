@@ -31,7 +31,7 @@ server.on("connection", (socket) => {
 			// keys appear
 			actions.forEach((a, i) => {
 				const { name, settings } = settingsOf(a);
-				const controller = name === "dial" ? "Encoder" : "Keypad";
+				const controller = name.startsWith("dial") ? "Encoder" : "Keypad";
 				send({ event: "willAppear", action: `at.marcelr.mradmin.${name}`, context: `ctx${i}`, device: "dev1",
 					payload: { settings, coordinates: { column: i % 5, row: Math.floor(i / 5) }, controller, isInMultiAction: false } });
 			});
@@ -68,14 +68,15 @@ const child = spawn(process.execPath, ["bin/plugin.js", "-port", String(port), "
 setTimeout(() => {
 	child.kill();
 	server.close();
+	const step = actions.some((a) => a.startsWith("dial")) ? 210 : 152;
 	const cells = actions.map((a, i) => {
 		const img = images.get(`ctx${i}`);
 		if (!img) return "";
 		const svg = decodeURIComponent(img.split(",")[1]).replace(/<svg [^>]*?viewBox="([^"]+)"[^>]*>/, (_, vb) => `<svg viewBox="${vb}" width="${vb.split(" ")[2]}" height="${vb.split(" ")[3]}">`);
-		return `<g transform="translate(${(i % 5) * 152} ${Math.floor(i / 5) * 152})">${svg}</g>`;
+		return `<g transform="translate(${(i % 5) * step} ${Math.floor(i / 5) * 152})">${svg}</g>`;
 	});
 	const rows = Math.ceil(actions.length / 5);
-	const sheet = `<svg xmlns="http://www.w3.org/2000/svg" width="${5 * 152}" height="${rows * 152}"><rect width="100%" height="100%" fill="#000"/>${cells.join("")}</svg>`;
+	const sheet = `<svg xmlns="http://www.w3.org/2000/svg" width="${5 * step}" height="${rows * 152}"><rect width="100%" height="100%" fill="#000"/>${cells.join("")}</svg>`;
 	fs.writeFileSync(out, new Resvg(sheet, { font: { loadSystemFonts: true } }).render().asPng());
 	console.log(`${images.size}/${actions.length} keys drawn`);
 	console.log(log.join("\n"));

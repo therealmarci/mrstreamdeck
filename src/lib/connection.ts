@@ -20,6 +20,7 @@ export type DeckState = {
 	url: string;
 	serverName: string;
 	me: { name: string; uuid: string; online: boolean; team: boolean; control: boolean };
+	players?: { name: string; uuid: string; ping?: number; world?: string }[];
 	server?: { online: number; max: number };
 	restart?: { at: number; restart: boolean; countdown: boolean; planned: boolean; reason: string };
 	maintenance?: { phase: string; title?: string; start?: number; end?: number };
@@ -52,7 +53,7 @@ export type TeamState = {
 	tiles?: { id: string; label: string; value: string; unit: string; tone: string; headline: string }[];
 	maintenance?: { phase: string; title?: string; start?: number; end?: number };
 	room?: { online: boolean; restarting: boolean; players: number; max: number; tps?: number };
-	history?: { tps: number[]; mspt: number[] };
+	history?: { tps: number[]; mspt: number[]; ram?: number[] };
 	staffChat?: { unread: number; last?: { from: string; text: string; time: number } };
 	adminMode?: { online: boolean; active: boolean };
 	restartControl?: { enabled: boolean; delays: number[]; running: number; roomRestarting: boolean };
@@ -343,6 +344,43 @@ class Connection {
 		this.state = null;
 		this.status = "setup";
 		this.changed();
+	}
+
+	private heads = new Map<string, { at: number; image: string | null }>();
+
+	/**
+	 * The head of an online player as a data URL for the dial, or undefined while it loads (the dials draw again
+	 * when it arrives). Kept for an hour.
+	 */
+	head(uuid: string): string | undefined {
+		const cached = this.heads.get(uuid);
+		if (cached && Date.now() - cached.at < 3_600_000) {
+			return cached.image ?? undefined;
+		}
+		if (!cached || Date.now() - cached.at >= 3_600_000) {
+			this.heads.set(uuid, { at: Date.now(), image: cached?.image ?? null });
+			void this.loadHead(uuid);
+		}
+		return cached?.image ?? undefined;
+	}
+
+	private async loadHead(uuid: string): Promise<void> {
+		try {
+			const response = await fetch(`${this.settings.url}/api/deck/head/${encodeURIComponent(uuid)}`, {
+				headers: { Authorization: `Bearer ${this.settings.token}` },
+				signal: AbortSignal.timeout(8_000),
+			});
+			if (response.ok) {
+				const data = Buffer.from(await response.arrayBuffer()).toString("base64");
+				this.heads.set(uuid, { at: Date.now(), image: "data:image/png;base64," + data });
+				if (this.heads.size > 300) {
+					this.heads.delete(this.heads.keys().next().value!);
+				}
+				this.changed();
+			}
+		} catch {
+			// try again with the next drawing after an hour
+		}
 	}
 
 	/** Opens a page of the web interface (path like "/admin/community/tickets") in the browser. */

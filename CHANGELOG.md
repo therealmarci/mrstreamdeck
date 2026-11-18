@@ -15,3 +15,4 @@ Alle wichtigen Änderungen an MRstreamdeck.
 - **Texte passen in die Tasten:** zu lange Texte werden erst kleiner, nur notfalls gekürzt.
 - **Plugin-Taste:** jede Taste, die ein Plugin über MRadmin anbietet - auch von künftigen Plugins.
 - **Überblick-Drehregler (Stream Deck +):** Drehen blättert durch Server, Leistung, Tickets, Warnungen, Posteingang und nächsten Neustart, Drücken öffnet die Seite im Browser.
+- **Weitere Drehregler (Stream Deck +):** **Spieler online** (mit Köpfen, drehen scrollt; Team mit Ping und Welt), **Chunkloader** (drehen wählt, drücken schaltet), **Team: Leistung live** (breite Kurve, drehen wechselt TPS / Tick-Zeit / RAM) und **Team: Neustart** (drehen wählt die Zeit, zweimal drücken startet bzw. bricht ab, Restzeit als Balken).

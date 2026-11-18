@@ -29,3 +29,9 @@ Tasten mit Wirkung leuchten beim ersten Druck in ihrer Farbe auf („Nochmal dr�
 
 ## Ankündigung
 Nur eigene Vorlagen ohne einzusetzende Werte (angelegt unter **Inhalte → Ankündigungen**). Discord bekommt sie, wenn die Vorlage das vorsieht.
+
+## Stream Deck +
+| Drehregler | Display | Drehen | Drücken / Tippen |
+|---|---|---|---|
+| **Team: Leistung live** | breite Kurve der letzten 10 Minuten mit aktuellem Wert | wechselt TPS, Tick-Zeit, RAM | öffnet die Leistungs-Seite |
+| **Team: Neustart** | gewählte Countdown-Zeit; läuft einer, die Restzeit als Balken | wählt 15, 30 oder 60 Minuten | **zweimal: starten bzw. abbrechen** |
